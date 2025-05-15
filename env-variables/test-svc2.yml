@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2025-05-03T04:52:35Z"
+  labels:
+    app: color
+  name: test-svc2
+  namespace: default
+  resourceVersion: "210705"
+  uid: 377c974b-c690-4e9f-b2e8-c144f7eae751
+spec:
+  clusterIP: 10.96.53.178
+  clusterIPs:
+  - 10.96.53.178
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: color
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
