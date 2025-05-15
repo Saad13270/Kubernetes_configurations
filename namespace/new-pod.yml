@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: new-pod
+  namespace: default
+  labels:
+    name: blue
+spec:
+  containers:
+  - name: internal
+    image: kodekloud/webapp-conntest
+    env:
+    - name: APP_NAME
+      value: Blue - Marketing Application
+    - name: BG_COLOR
+      value: blue
+    ports:
+    - containerPort: 8080
+      protocol: TCP
