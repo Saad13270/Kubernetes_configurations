@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bee
+  labels:
+    run: bee
+spec:
+  nodeName: kind-worker
+  containers:
+  - image: nginx
+    name: bee
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  tolerations:
+  - key: spray
+    operator: Equal
+    value: mortein
+    effect: NoSchedule
