@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp
+  labels:
+    app: fronted-replicaset
+    type: developement
+spec:
+  replicas: 5      
+  selector:
+     matchLabels:
+        app: backend
+  template:
+    metadata:
+      name: al-nafi
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: alpha
+          image: nginx
