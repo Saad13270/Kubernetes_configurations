@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: my-test-cron-job
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      backoffLimit: 5 # Try 5 time on this job
+      activeDeadlineSeconds: 20 # After evey 20 seconds the job will be run 5 time 
+      parallelism: 3 # How many pods (i.e., tasks) can run in parallel at the same time.
+      completions: 5 #How many successful runs the job should complete before it is considered done.
+      template:
+        spec:
+          containers:
+          - name: test-cron-job-container
+            image: busybox:stable
+            command:
+            - echo
+            - Hello This is test job container !!
+          restartPolicy: Never
