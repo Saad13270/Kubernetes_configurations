@@ -1,0 +1,41 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ecommerce-ingress
+  namespace: app-space
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /  # Ensures all traffic paths like /food rewrite to root (/)
+spec:
+  ingressClassName: nginx  # Must match your ingress controller class
+  rules:
+  - http:
+      paths:
+      - path: /food
+        pathType: Prefix
+        backend:
+          service:
+            name: food-service
+            port:
+              number: 8080
+      - path: /video
+        pathType: Prefix
+        backend:
+          service:
+            name: video-service
+            port:
+              number: 8080
+      - path: /wear
+        pathType: Prefix
+        backend:
+          service:
+            name: wear-service
+            port:
+              number: 8080
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: default-backend-service
+            port:
+              number: 80  # This is the port exposed by default-backend-service
+
