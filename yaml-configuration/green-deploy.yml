@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: green-deployment
+spec:
+ replicas: 1
+ selector:
+    matchLabels:
+            app: bluegreen-deployment
+            color: green
+ template:
+   metadata:
+     labels:
+       app: bluegreen-deployment
+       color: green
+
+   spec:
+     containers:
+        - name: nginx
+          image: linuxacademycontent/ckad-nginx:green
+          ports:
+             - containerPort: 80 
+
+
+
+# first version of the applications =====>> linuxacademycontent/ckad-nginx:blue
+# Second version of the applications ======> linuxacademycontent/ckad-nginx:green
