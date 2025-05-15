@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: first-pod
+  labels:
+    app: my-pod
+  namespace: default
+spec:
+  containers:
+    - name: ubuntu
+      image: ubuntu
+      command: ["sleep"] # we also write this       command: ["sleep", "10"]
+      args: ["10"]
+
