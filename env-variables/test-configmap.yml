@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  APP_COLOR: green
+  APP_TYPE: prod
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2025-05-03T05:02:46Z"
+  name: test-config
+  namespace: default
+  resourceVersion: "211640"
+  uid: 22106174-52c4-449b-94f8-a90f07f0edf0
